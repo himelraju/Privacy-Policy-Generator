@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Privacy Policy Generator</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #generated-policy {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      word-wrap: break-word;
+    }
+
+    .material-icons {
+      vertical-align: middle;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .section-title i {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+
+    .section-content {
+      margin-left: 34px;
+    }
+
+    .export-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .export-button i {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('policy-generator').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var companyName = document.getElementById('company-name').value;
+        var websiteName = document.getElementById('website-name').value;
+        var websiteURL = document.getElementById('website-url').value;
+        var useCookies = document.getElementById('use-cookies').value;
+        var useGoogleAdSense = document.getElementById('use-google-adsense').value;
+        var useThirdPartyAds = document.getElementById('use-third-party-ads').value;
+        var country = document.getElementById('country').value;
+        var state = document.getElementById('state').value;
+        var email = document.getElementById('email').value;
+        var policyText = document.getElementById('policy-text');
+
+        // Check if the policy text is empty, if so, generate a default text
+        if (!policyText.value) {
+          policyText.value = "This is the privacy policy for " + websiteName + " operated by " + companyName + ".\n\n" +
+                       "At " + websiteName + ", we value the privacy of our visitors and users and strive to protect it. " +
+                       "This privacy policy outlines the types of personal information we collect, how it is used, " +
+                       "and the steps we take to ensure its security.\n\n" +
+                       "Your privacy is important to us, and we do not share or sell your personal information " +
+                       "to any third parties. We may use cookies on our website to enhance your browsing experience. " +
+                       "Please review this policy to understand how we collect, use, and protect your personal information.\n\n" +
+                       "For more details, please visit our website at " + websiteURL + ".\n\n" +
+                       "If you have any questions or concerns about our privacy policy, please contact us at " + email + ".\n\n" +
+                       "Thank you for visiting " + websiteName + ".";
+        }
+
+        var generatedPolicy = "<div class='section-title'><i class='material-icons'>vpn_lock</i><h2>Privacy Policy</h2></div>\n\n" +
+                              "<div class='section-title'><i class='material-icons'>business</i><h3>Company Information</h3></div>\n" +
+                              "<div class='section-content'>\n" +
+                              "  <ul>\n" +
+                              "    <li>Company Name: " + companyName + "</li>\n" +
+                              "    <li>Website Name: " + websiteName + "</li>\n" +
+                              "    <li>Website URL: " + websiteURL + "</li>\n" +
+                              "  </ul>\n" +
+                              "</div>\n\n" +
+                              "<div class='section-title'><i class='material-icons'>language</i><h3>Website Usage</h3></div>\n" +
+                              "<div class='section-content'>\n" +
+                              "  <ul>\n" +
+                              "    <li>Do you use cookies on your website? " + useCookies + "</li>\n" +
+                              "    <li>Do you show advertising through Google AdSense on your website? " + useGoogleAdSense + "</li>\n" +
+                              "    <li>Do you show advertising from third parties (except Google)? " + useThirdPartyAds + "</li>\n" +
+                              "  </ul>\n" +
+                              "</div>\n\n" +
+                              "<div class='section-title'><i class='material-icons'>place</i><h3>Location</h3></div>\n" +
+                              "<div class='section-content'>\n" +
+                              "  <ul>\n" +
+                              "    <li>Country: " + country + "</li>\n" +
+                              "    <li>State: " + state + "</li>\n" +
+                              "  </ul>\n" +
+                              "</div>\n\n" +
+                              "<div class='section-title'><i class='material-icons'>email</i><h3>Contact Information</h3></div>\n" +
+                              "<div class='section-content'>\n" +
+                              "  <ul>\n" +
+                              "    <li>Email Address: " + email + "</li>\n" +
+                              "  </ul>\n" +
+                              "</div>\n\n" +
+                              "<div class='section-title'><i class='material-icons'>description</i><h3>Policy Text</h3></div>\n" +
+                              "<div class='section-content'>\n" +
+                              "  <p>" + policyText.value + "</p>\n" +
+                              "</div>";
+
+        document.getElementById('generated-policy').innerHTML = generatedPolicy;
+      });
+
+      document.getElementById('export-button').addEventListener('click', function() {
+        var policyText = document.getElementById('policy-text').value;
+        var link = document.createElement('a');
+        link.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(policyText);
+        link.download = 'privacy_policy.txt';
+        link.click();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Privacy Policy Generator</h1>
+    <form id="policy-generator">
+      <label for="company-name"><i class="material-icons">business</i> Your Company Name:</label>
+      <input type="text" id="company-name" required>
+
+      <label for="website-name"><i class="material-icons">language</i> Your Website Name:</label>
+      <input type="text" id="website-name" required>
+
+      <label for="website-url"><i class="material-icons">link</i> Your Website URL:</label>
+      <input type="text" id="website-url" required>
+
+      <label for="use-cookies"><i class="material-icons">local_cafe</i> Do you use cookies on your website?</label>
+      <select id="use-cookies" required>
+        <option value="">Please select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label for="use-google-adsense"><i class="material-icons">local_offer</i> Do you show advertising through Google AdSense on your website?</label>
+      <select id="use-google-adsense" required>
+        <option value="">Please select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label for="use-third-party-ads"><i class="material-icons">local_offer</i> Do you show advertising from third parties (except Google)?</label>
+      <select id="use-third-party-ads" required>
+        <option value="">Please select</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+
+      <label for="country"><i class="material-icons">place</i> Country:</label>
+      <input type="text" id="country" required>
+
+      <label for="state"><i class="material-icons">place</i> State:</label>
+      <input type="text" id="state" required>
+
+      <label for="email"><i class="material-icons">email</i> Your Email Address:</label>
+      <input type="email" id="email" required>
+
+      <label for="policy-text"><i class="material-icons">description</i> Policy Text:</label>
+      <textarea id="policy-text"></textarea>
+
+      <button type="submit">Generate Privacy Policy</button>
+    </form>
+
+    <div id="generated-policy"></div>
+
+    <div class="export-button">
+      <button id="export-button"><i class="material-icons">save_alt</i> Export to TXT</button>
+    </div>
+  </div>
+</body>
+</html>
